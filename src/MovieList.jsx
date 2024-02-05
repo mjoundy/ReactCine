@@ -5,7 +5,7 @@ import Batman from "./assets/batman.jpg"
 import Spiderman from "./assets/Spiderman.jpg"
 import DeadPool from "./assets/Deadpool.webp"
 
-const MovieList = () => {
+const MovieList = ({searchValue}) => {
   const films = [
     { name: "Pirate", image: FP, link: "/", rate: 10 },
     { name: "Batman", image: Batman, link: "/", rate: 5 },
@@ -17,7 +17,7 @@ const MovieList = () => {
 
   return (
     <div className="px-[50px] flex gap-[20px] my-[50px] flex-wrap justify-center">
-      {films.map((film, index) => (
+      {films.filter(el => el.name.toLowerCase().includes(searchValue)).map((film, index) => (
         <MovieCard
           key={index}
           name={film.name}
